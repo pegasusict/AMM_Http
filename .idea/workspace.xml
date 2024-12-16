@@ -4,45 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="585e8fb8-e55a-43c4-b433-729fe5459f62" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/QuickJinja_project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/composerJson.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/highlightedFiles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AMM_HTTP/Models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AMM_HTTP/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AMM_Http.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AMM_Http.iml" afterDir="false" />
+    <list default="true" id="585e8fb8-e55a-43c4-b433-729fe5459f62" name="Changes" comment="Work in progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/tasks.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/AMM_HTTP/Routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/db/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/db/db.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/initialize_functions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/main/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/main/controller.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/main/main_tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/modules/main/route.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tests/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tests/conftest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tests/tests_main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.debug.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AMM_HTTP/Models.py" beforeDir="false" afterPath="$PROJECT_DIR$/AMM_HTTP/Models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AMM_HTTP/Routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/AMM_HTTP/Routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AMM_HTTP/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/AMM_HTTP/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +90,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/AMM_HTTP" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -167,10 +136,23 @@
       <workItem from="1734268575913" duration="156000" />
       <workItem from="1734268741974" duration="506000" />
     </task>
+    <task id="LOCAL-00001" summary="Work in progress">
+      <option name="closed" value="true" />
+      <created>1734326291846</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1734326291846</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Work in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="Work in progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -179,6 +161,11 @@
           <url>file://$PROJECT_DIR$/AMM_HTTP/__init__.py</url>
           <line>36</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/AMM_HTTP/Routes.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

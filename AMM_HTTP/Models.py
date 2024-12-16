@@ -14,43 +14,113 @@
 #   along with AMM.  If not, see <https://www.gnu.org/licenses/>.
 
 from datetime import datetime, UTC
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import URL
+
+from AMM_HTTP import db
+
 
 class Stats(db.Model):
     stat_id = db.Column(db.Int, primary_key=True)
     name = db.Column(db.String, nullable=False)
+    range = db.Column(db.Int, nullable=False)
     value = db.Column(db.Int, nullable=False)
+
+    def __repr__(self) -> str:
+        return f"Stat {self.id}"
 
 
 class Track(db.Model):
-    mbid = db.Column(db.String, primary_key=True)
+    id = db.Column(db.Int, primary_key=True)
+    mbid = db.Column(db.String, unique=True)
     title = db.Column(db.String, nullable=False)
     subtitle = db.Column(db.String, nullable=True)
-    artist_id = db.Column(db.String, nullable=False)
-    composer_id = db.Column(db.String, nullable=True)
-    producer_id = db.Column(db.String, nullable=True)
-    registered = db.Column(db.DateTime, default=datetime.now(UTC))
+    key_id = db.Column(db.Int)
 
     def __repr__(self) -> str:
-        return f"Track {self.mbid}"
+        return f"Track {self.id}"
+
 
 class Album(db.Model):
-    mbid = db.Column(db.String, primary_key=True)
+    id = db.Column(db.Int, primary_key=True)
+    mbid = db.Column(db.String, unique=True)
     title = db.Column(db.String, nullable=False)
     subtitle = db.Column(db.String, nullable=True)
-    artist_id = db.Column(db.String, nullable=False)
-    registered = db.Column(db.DateTime, default=datetime.now(UTC))
+    label_id = db.Column(db.Int, primary_key=True)
 
     def __repr__(self) -> str:
-        return f"Track {self.mbid}"
+        return f"Album {self.id}"
+
 
 class Person(db.Model):
-    mbid = db.Column(db.String, primary_key=True)
+    id = db.Column(db.String, primary_key=True)
+    mbid = db.Column(db.String, unique=True)
     first_name = db.Column(db.String, nullable=True)
     middle_name = db.Column(db.String, nullable=True)
     last_name = db.Column(db.String, nullable=False)
-    registered = db.Column(db.DateTime, default=datetime.now(UTC))
+    born = db.Column(db.DateTime)
+    deceased = db.Column(db.DateTime)
 
     def __repr__(self) -> str:
-        return f"Track {self.mbid}"
+        return f"Person {self.id}"
+
+
+class File(db.Model):
+    id = db.Column(db.String, primary_key=True)
+    audio_ip = db.Column(db.String)
+    filename = db.Column(db.String, nullable=False)
+    import_path = db.Column(db.String, nullable=True)
+    quarantine_path = db.Column(db.String, nullable=False)
+    definitive_path = db.Column(db.String, nullable=True)
+    registered = db.Column(db.DateTime, default=datetime.now(UTC))
+    processed = db.Column(db.DateTime)
+
+    def __repr__(self) -> str:
+        return f"File {self.id}"
+
+
+class Label(db.Model):
+    id = db.Column(db.Int, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    parent_id = db.Column(db.Int, nullable=False)
+    owner_id = db.Column(db.Int, nullable=False)
+
+    def __repr__(self) -> str:
+        return f"Label {self.id}"
+
+
+class Genre(db.Model):
+    id = db.Column(db.Int, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    parent_id = db.Column(db.Int, nullable=True)
+
+    def __repr__(self) -> str:
+        return f"Genre {self.id}"
+
+
+class Key(db.Model):
+    id = db.Column(db.Int, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+
+    def __repr__(self) -> str:
+        return f"Key {self.id}"
+
+
+class TrackPerson(db.Model):
+    track_id = db.Column(db.Int, primary_key=True)
+    person_id = db.Column(db.Int, primary_key=True)
+    role = db.Column(db.Enum('artist', 'conductor', 'composer', 'lyricist', 'producer'))
+
+
+class AlbumPerson(db.Model):
+    album_id = db.Column(db.Int, primary_key=True)
+    person_id = db.Column(db.Int, primary_key=True)
+    role = db.Column(db.Enum('artist', 'conductor', 'composer', 'lyricist', 'producer'))
+
+
+class TrackGenre(db.Model):
+    track_id = db.Column(db.Int, primary_key=True)
+    genre_id = db.Column(db.Int, primary_key=True)
+
+
+class AlbumGenre(db.Model):
+    album_id = db.Column(db.Int, primary_key=True)
+    genre_id = db.Column(db.Int, primary_key=True)
