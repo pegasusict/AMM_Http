@@ -14,6 +14,7 @@
 #   along with AMM.  If not, see <https://www.gnu.org/licenses/>.
 
 from datetime import datetime, UTC
+from email.policy import default
 
 from AMM_HTTP import db
 
@@ -21,8 +22,8 @@ from AMM_HTTP import db
 class Stats(db.Model):
     stat_id = db.Column(db.Int, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    range = db.Column(db.Int, nullable=False)
-    value = db.Column(db.Int, nullable=False)
+    range = db.Column(db.Int, nullable=True)
+    value = db.Column(db.Int, nullable=False, default=0)
 
     def __repr__(self) -> str:
         return f"Stat {self.id}"
@@ -44,7 +45,9 @@ class Album(db.Model):
     mbid = db.Column(db.String, unique=True)
     title = db.Column(db.String, nullable=False)
     subtitle = db.Column(db.String, nullable=True)
-    label_id = db.Column(db.Int, primary_key=True)
+    discs = db.Column(db.Int)
+    tracks = db.Column(db.Int)
+    label_id = db.Column(db.Int)
 
     def __repr__(self) -> str:
         return f"Album {self.id}"
@@ -66,11 +69,10 @@ class Person(db.Model):
 class File(db.Model):
     id = db.Column(db.String, primary_key=True)
     audio_ip = db.Column(db.String)
-    filename = db.Column(db.String, nullable=False)
-    import_path = db.Column(db.String, nullable=True)
-    quarantine_path = db.Column(db.String, nullable=False)
+    import_path = db.Column(db.String, nullable=False)
+    quarantine_path = db.Column(db.String, nullable=True)
     definitive_path = db.Column(db.String, nullable=True)
-    registered = db.Column(db.DateTime, default=datetime.now(UTC))
+    imported = db.Column(db.DateTime, default=datetime.now(UTC))
     processed = db.Column(db.DateTime)
 
     def __repr__(self) -> str:
@@ -80,8 +82,8 @@ class File(db.Model):
 class Label(db.Model):
     id = db.Column(db.Int, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    parent_id = db.Column(db.Int, nullable=False)
-    owner_id = db.Column(db.Int, nullable=False)
+    parent_id = db.Column(db.Int, nullable=True)
+    owner_id = db.Column(db.Int, nullable=True)
 
     def __repr__(self) -> str:
         return f"Label {self.id}"

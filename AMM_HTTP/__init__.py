@@ -13,13 +13,10 @@
 #  You should have received a copy of the GNU General Public License
 #   along with AMM.  If not, see <https://www.gnu.org/licenses/>.
 
-# Todo:MVC URI's !!!
 from flask import Flask
 from flask_scss import Scss
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import URL
-
-from AMM_HTTP.Models import *
 
 app = Flask(__name__)
 Scss(app)
