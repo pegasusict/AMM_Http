@@ -1,3 +1,79 @@
-body{background-color: black;color: cornsilk;}
+//color variables
+$bg_color: black;
+$primary-color: blue;
+$primary-hover-color: lightblue;
+$table-color: lightgray;
+$title-color: wheat;
+$success-color: green;
+$success-hover-color: lightgreen;
+$text-color: cornsilk;
 
+*{
+    text-align: center;
+}
 
+body{
+    background-color: $bg_color;
+    color: $text-color;
+    font-family: 'Tahoma', 'Vermana', Arial, sans-serif;
+    margin:0;
+    padding:0;
+}
+
+.content{
+    width: 80%; max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(3, 3, 3, 0.1);
+
+    h1{
+        color: $title-color;
+    }
+
+    table{
+        border: 3px double $table-color;
+        width:100%;
+        margin-top: 20px;
+//         border-collapse: collapse;
+
+        th,td{
+            padding: 10px;
+            border: 1px solid $table-color;
+        }
+    }
+
+    a{
+        display: inline-block;
+        padding: 0 16px;
+        margin: 5px;
+        border-radius: 20px;
+        background-color: $primary-color;
+        color: #fff;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+
+        &:hover{
+            background-color: $primary-hover-color;
+        }
+        &:visited{
+            color: #fff;
+        }
+    }
+
+    input {
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid;
+        border-radius: 5px;
+    }
+
+    #btn-add {
+        background-color: $success-color;
+        color: white;
+        cursor: pointer;
+        &:hover{
+            background-color: success-hover-color;
+        }
+    }
+}
