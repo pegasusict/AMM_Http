@@ -17,12 +17,12 @@ from logging import error
 from flask import render_template, request
 
 from AMM_HTTP import app
-from AMM_HTTP.Models import File, Person, Album, Track, Label, Genre, Key, Stats
+from AMM_HTTP.Models import File, Person, Album, Track, Label, Genre, Key, Stat
 
 
 @app.route("/")
 def index():  # generate dashboard
-    dash_data = Stats.query.all()
+    dash_data = Stat.query.all()
     return render_template("dashboard.html", dash_data=dash_data)
 
 

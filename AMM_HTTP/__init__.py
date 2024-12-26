@@ -22,16 +22,15 @@ app = Flask(__name__)
 Scss(app)
 app.AMM_DEBUG = True
 
-engine_object = URL.create(
+db_url = URL.create(
     "mysql+pymysql",
     username="sql_master",
     password="Sql_1r3i5",  # plain (unescaped) text
     host="localhost",
     database="amm",
 )
-
-# engine = SQLAlchemy.create_engine(engine_object)
 ############################################################################
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////project.db"
+# app.config["SQLALCHEMY_DATABASE_URI"] = db_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True if app.AMM_DEBUG == True else False
 db = SQLAlchemy(app)

@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="585e8fb8-e55a-43c4-b433-729fe5459f62" name="Changes" comment="Work in progress">
-      <change afterPath="$PROJECT_DIR$/templates/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/print.html" afterDir="false" />
+    <list default="true" id="585e8fb8-e55a-43c4-b433-729fe5459f62" name="Changes" comment="updated gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/QuickJinja_project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/QuickJinja_project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AMM_HTTP/Models.py" beforeDir="false" afterPath="$PROJECT_DIR$/AMM_HTTP/Models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AMM_HTTP/Routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/AMM_HTTP/Routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AMM_HTTP/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/AMM_HTTP/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQL/AMM v0.1.0.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQL/AMM v0.1.1.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +89,7 @@
     &quot;Python.app.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/pegasus/PycharmProjects/AMM_Http/templates&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/pegasus/PycharmProjects/AMM_Http/.idea/shelf/Changes/shelved.patch&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
@@ -187,7 +186,31 @@
       <option name="project" value="LOCAL" />
       <updated>1734330248474</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Work in progress">
+      <option name="closed" value="true" />
+      <created>1734338663680</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734338663680</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Updated SQL to version 0.1.1">
+      <option name="closed" value="true" />
+      <created>1734499149973</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1734499149973</updated>
+    </task>
+    <task id="LOCAL-00005" summary="updated gitignore">
+      <option name="closed" value="true" />
+      <created>1734499308588</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1734499308588</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,7 +218,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Work in progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="Work in progress" />
+    <MESSAGE value="Updated SQL to version 0.1.1" />
+    <MESSAGE value="updated gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
