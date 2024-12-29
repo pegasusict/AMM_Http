@@ -12,10 +12,13 @@ version="0.0.0"
   <link rel="stylesheet" href="{{ url_for("static", filename="styles.css")}}">
   <title>{{title}}</title>
   <link rel="icon" type="image/png" href="{{url_for("static", filename="favicon.png")}}">
-  {% block head %} {% endblock %}
+  {% block head %} {% endblock head %}
 </head>
 <body>
   <H1>{{title}} v{{version}}</H1>
-  {% block body %} {% endblock %}
+  {% block body %} {% endblock body %}
+  <footer>
+    {% block footer %}{% endblock footer %}
+  </footer>
 </body>
 </html>

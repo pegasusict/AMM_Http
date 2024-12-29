@@ -5,3 +5,4 @@ pytest
 gunicorn
 flasgger
 SQLAlchemy>=2.0.36
+black >= 24.10.0

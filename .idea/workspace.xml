@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="585e8fb8-e55a-43c4-b433-729fe5459f62" name="Changes" comment="updated gitignore">
-      <change beforePath="$PROJECT_DIR$/.idea/QuickJinja_project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/QuickJinja_project.xml" afterDir="false" />
+    <list default="true" id="585e8fb8-e55a-43c4-b433-729fe5459f62" name="Changes" comment="updated Models to version 0.2.0, added albumart and made various fixes">
+      <change afterPath="$PROJECT_DIR$/templates/elements.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AMM_HTTP/Models.py" beforeDir="false" afterPath="$PROJECT_DIR$/AMM_HTTP/Models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AMM_HTTP/Routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/AMM_HTTP/Routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AMM_HTTP/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/AMM_HTTP/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQL/AMM v0.1.0.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQL/AMM v0.1.1.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/print.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/print.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +50,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -85,6 +89,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;Python.__init__.executor&quot;: &quot;Run&quot;,
     &quot;Python.app.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -210,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734499308588</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="updated Models to version 0.2.0, added albumart and made various fixes">
+      <option name="closed" value="true" />
+      <created>1735206820199</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1735206820199</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,17 +233,7 @@
     <MESSAGE value="Work in progress" />
     <MESSAGE value="Updated SQL to version 0.1.1" />
     <MESSAGE value="updated gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated gitignore" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/AMM_HTTP/Routes.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="updated Models to version 0.2.0, added albumart and made various fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated Models to version 0.2.0, added albumart and made various fixes" />
   </component>
 </project>

@@ -13,8 +13,8 @@
 #  You should have received a copy of the GNU General Public License
 #   along with AMM.  If not, see <https://www.gnu.org/licenses/>.
 
-# v0.2.0
-# build 20241226
+__version__ = "0.2.2"
+__build_date__ = 20241229
 
 import enum
 from datetime import datetime, UTC
@@ -42,6 +42,7 @@ class RelationBase(Base):
     pass
 
 
+#######################################################################
 class Stat(ItemBase):
     __tablename__ = "Stats"
     name = Column(String, nullable=False)
@@ -58,6 +59,7 @@ class StatRange(OptFieldBase):
     range_end = Column(Float)
 
 
+#######################################################################
 class Codecs(enum.Enum):
     wav = 0
     wma = 1
@@ -68,6 +70,15 @@ class Codecs(enum.Enum):
     flac = 6
 
 
+class PersonRoles(enum.Enum):
+    artist = 0
+    conductor = 1
+    composer = 2
+    lyricist = 3
+    producer = 4
+
+
+#######################################################################
 class File(ItemBase):
     __tablename__ = "Files"
     track_id = Column(Integer, ForeignKey("Tracks"))
@@ -84,18 +95,66 @@ class File(ItemBase):
         return f"File {self.id}"
 
 
-class FilePath(OptFieldBase):
-    __tablename__ = "FilePaths"
-    file_id = Column(Integer, primary_key=True)
-    path = Column(String, nullable=False)
-    definitive = Column(db.Bool)
-
-
 class Track(ItemBase):
     __tablename__ = "Tracks"
 
     def __repr__(self) -> str:
         return f"Track {self.id}"
+
+
+class Album(ItemBase):
+    __tablename__ = "Albums"
+    discs = Column(Integer)
+    tracks = Column(Integer)
+    label_id = Column(Integer, ForeignKey("Labels"))
+
+    def __repr__(self) -> str:
+        return f"Album {self.id}"
+
+
+class Person(ItemBase):
+    __tablename__ = "Persons"
+    mbid = Column(String(40), unique=True)
+    first_name = Column(String, nullable=True)
+    middle_name = Column(String, nullable=True)
+    last_name = Column(String, nullable=False)
+    born = Column(DateTime)
+    deceased = Column(DateTime)
+
+    def __repr__(self) -> str:
+        return f"Person {self.id}"
+
+
+class Label(ItemBase):
+    __tablename__ = "Labels"
+    name = Column(String, nullable=False)
+
+    def __repr__(self) -> str:
+        return f"Label {self.id}"
+
+
+class Key(ItemBase):
+    __tablename__ = "Keys"
+    name = Column(String, nullable=False)
+
+    def __repr__(self) -> str:
+        return f"Key {self.id}"
+
+
+class Genre(ItemBase):
+    __tablename__ = "Genres"
+    name = Column(String, nullable=False)
+
+    def __repr__(self) -> str:
+        return f"Genre {self.id}"
+
+
+#######################################################################
+class FilePath(OptFieldBase):
+    __tablename__ = "FilePaths"
+    file_id = Column(Integer, primary_key=True)
+    path = Column(String, nullable=False)
+    definitive = Column(db.Bool)
 
 
 class TrackMBid(OptFieldBase):
@@ -109,16 +168,6 @@ class TrackTitle(OptFieldBase):
     track_id = Column(Integer, primary_key=True)
     title = Column(String, nullable=False)
     main = Column(db.Bool, default=True, primary_key=True)
-
-
-class Album(ItemBase):
-    __tablename__ = "Albums"
-    discs = Column(Integer)
-    tracks = Column(Integer)
-    label_id = Column(Integer, ForeignKey("Labels"))
-
-    def __repr__(self) -> str:
-        return f"Album {self.id}"
 
 
 class AlbumMBid(OptFieldBase):
@@ -140,29 +189,10 @@ class AlbumArt(OptFieldBase):
     art_path = Column(String)
 
 
-class Person(ItemBase):
-    __tablename__ = "Persons"
-    mbid = Column(String(40), unique=True)
-    first_name = Column(String, nullable=True)
-    middle_name = Column(String, nullable=True)
-    last_name = Column(String, nullable=False)
-    born = Column(DateTime)
-    deceased = Column(DateTime)
-
-    def __repr__(self) -> str:
-        return f"Person {self.id}"
-
-
 class PersonPicture(OptFieldBase):
-    pass
-
-
-class PersonRoles(enum.Enum):
-    artist = 0
-    conductor = 1
-    composer = 2
-    lyricist = 3
-    producer = 4
+    __tablename__ = "PersonPictures"
+    person_id = Column(Integer, ForeignKey("Persons"))
+    picture_path = Column(String)
 
 
 class TrackPerson(OptFieldBase):
@@ -179,14 +209,7 @@ class AlbumPerson(OptFieldBase):
     role = Column(Enum(PersonRoles))
 
 
-class Label(ItemBase):
-    __tablename__ = "Labels"
-    name = Column(String, nullable=False)
-
-    def __repr__(self) -> str:
-        return f"Label {self.id}"
-
-
+#######################################################################
 class LabelParent(RelationBase):
     __tablename__ = "LabelParentRelations"
     label_id = Column(Integer, ForeignKey("Labels"))
@@ -199,31 +222,17 @@ class LabelOwner(RelationBase):
     owner_id = Column(Integer, ForeignKey("Persons"))
 
 
-class Key(ItemBase):
-    __tablename__ = "Keys"
-    name = Column(String, nullable=False)
-
-    def __repr__(self) -> str:
-        return f"Key {self.id}"
-
-
 class TrackKey(RelationBase):
     __tablename__ = "TrackKeyRelations"
     track_id = Column(Integer, ForeignKey("Tracks"))
     key_id = Column(Integer, ForeignKey("Keys"))
 
 
-class Genre(ItemBase):
-    __tablename__ = "Genres"
-    name = Column(String, nullable=False)
-
-    def __repr__(self) -> str:
-        return f"Genre {self.id}"
-
 class GenreParent(RelationBase):
     __tablename__ = "GenreParentRelations"
     genre_id = Column(Integer, ForeignKey("Genres"))
     parent_id = Column(Integer, ForeignKey("Genres"))
+
 
 class TrackGenre(RelationBase):
     __tablename__ = "TrackGenreRelations"
@@ -233,5 +242,5 @@ class TrackGenre(RelationBase):
 
 class AlbumGenre(RelationBase):
     __tablename__ = "AlbumGenreRelations"
-    album_id = Column(Integer, primary_key=True)
-    genre_id = Column(Integer, primary_key=True)
+    album_id = Column(Integer, ForeignKey("Albums"))
+    genre_id = Column(Integer, ForeignKey("Genres"))

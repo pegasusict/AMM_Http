@@ -12,6 +12,9 @@
 #
 #  You should have received a copy of the GNU General Public License
 #   along with AMM.  If not, see <https://www.gnu.org/licenses/>.
+__version__ = "0.1.1"
+__build_date__ = 20241229
+
 from logging import error
 
 from flask import render_template, request
@@ -27,7 +30,7 @@ def index():  # generate dashboard
 
 
 @app.route("<model>/<view>/<command>/<id_number>/", strict_slashes=False, methods=["GET", "POST"])
-@app.route("<model>/<view>/<command>/", strict_slashes=False, methods=["GET", "POST"])
+@app.route("<model>/<view>/create/", strict_slashes=False, methods=["GET", "POST"])
 @app.route("<model>/<view>/", strict_slashes=False, methods=["GET"])
 @app.route("<model>/", strict_slashes=False, methods=["GET"])
 def mvc(model: str, view: str = None, command: str = None, id_number: int = None):
@@ -39,10 +42,15 @@ def mvc(model: str, view: str = None, command: str = None, id_number: int = None
                 if command == "search":
                     filters = []
                     results = []
+                    first_processed = False
                     query = f"GET FROM `{model}` WHERE "
-                    for k, v in request.form:
+                    for k, v in request.form["filters"]:
                         filters[k] = v
-                        pass
+                        if not first_processed:
+                            query += f"{k} LIKE {v} "
+                            first_processed = True
+                        else:
+                            query += f"AND {k} LIKE {v} "
                     if model == File:
                         results = File.query(query).all
                     elif model == Person:

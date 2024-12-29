@@ -12,27 +12,19 @@
 #
 #  You should have received a copy of the GNU General Public License
 #   along with AMM.  If not, see <https://www.gnu.org/licenses/>.
-__version__ = "0.0.5"
+
+__version__ = "0.0.0"
 __build_date__ = 20241229
-from flask import Flask
-from flask_scss import Scss
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import URL
 
-app = Flask(__name__)
-Scss(app)
-app.AMM_DEBUG = True
 
-db_url = URL.create(
-    "mysql+pymysql",
-    username="sql_master",
-    password="Sql_1r3i5",  # plain (unescaped) text
-    host="localhost",
-    port=3306,
-    database="amm",
-)
-############################################################################
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////project.db"
-# app.config["SQLALCHEMY_DATABASE_URI"] = db_url
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True if app.AMM_DEBUG else False
-db = SQLAlchemy(app)
+### FILE
+
+#filename
+#import_path
+#quarantine_path
+#definitive_path
+#bit_rate
+#length
+#imported
+#processed
+#stage
