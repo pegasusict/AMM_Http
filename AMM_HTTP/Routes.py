@@ -12,14 +12,15 @@
 #
 #  You should have received a copy of the GNU General Public License
 #   along with AMM.  If not, see <https://www.gnu.org/licenses/>.
-__version__ = "0.1.1"
-__build_date__ = 20241229
+__version__ = "0.2.0"
+__build_date__ = 20250103
 
 from logging import error
 
 from flask import render_template, request
 
 from AMM_HTTP import app
+from AMM_HTTP.Api import api_list, api_detail
 from AMM_HTTP.Models import File, Person, Album, Track, Label, Genre, Key, Stat
 
 
@@ -76,3 +77,48 @@ def mvc(model: str, view: str = None, command: str = None, id_number: int = None
                     return render_template("detail.html", model=model, command="view", id_number=id_number)
         else:
             return render_template("list.html", model=model)
+
+
+@app.route("api/<model>/<view>/<command>/<item_id>/", strict_slashes=False, methods=["GET", "POST"])
+@app.route("api/<model>/<view>/create/", strict_slashes=False, methods=["POST"])
+@app.route("api/<model>/<view>/", strict_slashes=False, methods=["GET"])
+@app.route("api/<model>/", strict_slashes=False, methods=["GET"])
+def api(model: str, view: str = None, command: str = None, item_id: int = None):
+    if model.lower() not in ["file", "person", "album", "track", "label", "genre", "key"]:
+        return 404
+    if view is not None and view.lower() in ["list", "detail"]:
+        if command is not None and command.lower() in ["search", "edit", "print", "view"]:
+            if command.lower() == "search":
+                filters = []
+                results = []
+                first_processed = False
+                query = f"GET FROM `{model}` WHERE "
+                for k, v in request.form["filters"]:
+                    filters[k] = v
+                    if not first_processed:
+                        query += f"{k} LIKE {v} "
+                        first_processed = True
+                    else:
+                        query += f"AND {k} LIKE {v} "
+                model_lower = model.lower()
+                if model_lower == "file":
+                    results = File.query(query).all
+                elif model_lower == "person":
+                    results = Person.query(query).all
+                elif model_lower == "album":
+                    results = Album.query(query).all
+                elif model_lower == "track":
+                    results = Track.query(query).all
+                elif model_lower == "label":
+                    results = Label.query(query).all
+                elif model_lower == "genre":
+                    results = Genre.query(query).all
+                elif model_lower == "key":
+                    results = Key.query(query).all
+                else:
+                    error("unknown model")
+                return api_list(model=model, filters=filters, results=results)
+            else:
+                return api_detail(model=model, command=command, item_id=item_id)
+    else:
+        return api_list(model=model)

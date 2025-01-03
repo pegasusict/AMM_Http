@@ -13,8 +13,8 @@
 #  You should have received a copy of the GNU General Public License
 #   along with AMM.  If not, see <https://www.gnu.org/licenses/>.
 
-__version__ = "0.2.2"
-__build_date__ = 20241229
+__version__ = "0.2.4"
+__build_date__ = 20250103
 
 import enum
 from datetime import datetime, UTC
@@ -97,6 +97,8 @@ class File(ItemBase):
 
 class Track(ItemBase):
     __tablename__ = "Tracks"
+    compose_date = Column(DateTime, default="1900-1-1")
+    release_date = Column(DateTime, default="1900-1-1")
 
     def __repr__(self) -> str:
         return f"Track {self.id}"
@@ -107,6 +109,7 @@ class Album(ItemBase):
     discs = Column(Integer)
     tracks = Column(Integer)
     label_id = Column(Integer, ForeignKey("Labels"))
+    release_date = Column(DateTime, default="1900-1-1")
 
     def __repr__(self) -> str:
         return f"Album {self.id}"
@@ -161,6 +164,12 @@ class TrackMBid(OptFieldBase):
     __tablename__ = "TrackMBids"
     track_id = Column(Integer, primary_key=True)
     mbid = Column(String(40), unique=True)
+
+
+class TrackLyric(OptFieldBase):
+    __tablename__ = "TrackLyrics"
+    track_id = Column(Integer, primary_key=True)
+    Lyric = Column(String)
 
 
 class TrackTitle(OptFieldBase):

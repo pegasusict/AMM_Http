@@ -12,36 +12,24 @@
 #
 #  You should have received a copy of the GNU General Public License
 #   along with AMM.  If not, see <https://www.gnu.org/licenses/>.
-from Models import *
-
 __version__ = "0.0.0"
 __build_date__ = 20250103
 
+from AMM_HTTP.Models import File, Track
 
-### FILE
 
-# File.import_path
-# File.bit_rate
-# File.length
-# File.imported
-# File.processed
-# File.stage
-# FilePath.quarantine_path
-# FilePath.definitive_path
-# Track.compose_date
-# Track.release_date
-# TrackTitle.title
-# TrackTitle.subtitle
-# TrackLyric.lyric
-# Person.artist (opt plural)
-# Person.composer (opt plural)
-# Person.lyricist (opt plural)
-# Person.producer (opt plural)
-# Genre.genre (opt plural)
-## AlbumTitle.title    #
-## Person.album_artist #        sets sorted by release_date, ascending
-## Album.release_date  #
+def api_detail(model: str, command: str, item_id: int):
+    if model.lower() not in ["file", "person", "album", "track", "label", "genre", "key"]:
+        return 404
+    if command.lower() not in ["view", "edit"]: return 404
 
-def get_file_info(file_id:int):
-    file_info = File.get_or_404(file_id)
-    return file_info
+
+def api_list(model: str, filters: list = None, results: list = None):
+    if model.lower() not in ["file", "person", "album", "track", "label", "genre", "key"]:
+        return 404
+    if not filters:
+        match model.lower():
+            case "file":
+                return File.get_all()
+            case "track":
+                return Track.get_all()
