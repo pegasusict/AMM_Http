@@ -12,8 +12,8 @@
 #
 #  You should have received a copy of the GNU General Public License
 #   along with AMM.  If not, see <https://www.gnu.org/licenses/>.
-__version__ = "0.2.0"
-__build_date__ = 20250103
+__version__ = "0.2.1"
+__build_date__ = 20250105
 
 from logging import error
 
@@ -25,15 +25,15 @@ from AMM_HTTP.Models import File, Person, Album, Track, Label, Genre, Key, Stat
 
 
 @app.route("/")
-def index():  # generate dashboard
+def dashboard():  # generate dashboard
     dash_data = Stat.query.all()
     return render_template("dashboard.html", dash_data=dash_data)
 
 
-@app.route("<model>/<view>/<command>/<id_number>/", strict_slashes=False, methods=["GET", "POST"])
-@app.route("<model>/<view>/create/", strict_slashes=False, methods=["GET", "POST"])
-@app.route("<model>/<view>/", strict_slashes=False, methods=["GET"])
-@app.route("<model>/", strict_slashes=False, methods=["GET"])
+@app.route("<str:model>/<str:view>/<str:command>/<int:id_number>/", strict_slashes=False, methods=["GET", "POST"])
+@app.route("<str:model>/<str:view>/create/", strict_slashes=False, methods=["GET", "POST"])
+@app.route("<str:model>/<str:view>/", strict_slashes=False, methods=["GET"])
+@app.route("<str:model>/", strict_slashes=False, methods=["GET"])
 def mvc(model: str, view: str = None, command: str = None, id_number: int = None):
     if model.lower() not in ["file", "person", "album", "track", "label", "genre", "key"]:
         return 404
@@ -79,10 +79,10 @@ def mvc(model: str, view: str = None, command: str = None, id_number: int = None
             return render_template("list.html", model=model)
 
 
-@app.route("api/<model>/<view>/<command>/<item_id>/", strict_slashes=False, methods=["GET", "POST"])
-@app.route("api/<model>/<view>/create/", strict_slashes=False, methods=["POST"])
-@app.route("api/<model>/<view>/", strict_slashes=False, methods=["GET"])
-@app.route("api/<model>/", strict_slashes=False, methods=["GET"])
+@app.route("api/<str:model>/<str:view>/<str:command>/<int:item_id>/", strict_slashes=False, methods=["GET", "POST"])
+@app.route("api/<str:model>/create/", strict_slashes=False, methods=["POST"])
+@app.route("api/<str:model>/<str:view>/", strict_slashes=False, methods=["GET"])
+@app.route("api/<str:model>/", strict_slashes=False, methods=["GET"])
 def api(model: str, view: str = None, command: str = None, item_id: int = None):
     if model.lower() not in ["file", "person", "album", "track", "label", "genre", "key"]:
         return 404

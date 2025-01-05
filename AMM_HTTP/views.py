@@ -12,10 +12,10 @@
 #
 #  You should have received a copy of the GNU General Public License
 #   along with AMM.  If not, see <https://www.gnu.org/licenses/>.
-from Models import *
+from Models import File, FilePath,Track,Title,MBid,Codecs
 
 __version__ = "0.0.0"
-__build_date__ = 20250103
+__build_date__ = 20250105
 
 
 ### FILE
@@ -26,18 +26,20 @@ __build_date__ = 20250103
 # File.imported
 # File.processed
 # File.stage
-# FilePath.quarantine_path
-# FilePath.definitive_path
+# Codecs.codec
+# FilePath.quarantine_path (opt)
+# FilePath.definitive_path (opt)
 # Track.compose_date
 # Track.release_date
 # TrackTitle.title
 # TrackTitle.subtitle
 # TrackLyric.lyric
-# Person.artist (opt plural)
+# Person.performer (opt plural)
 # Person.composer (opt plural)
 # Person.lyricist (opt plural)
 # Person.producer (opt plural)
 # Genre.genre (opt plural)
+# Key.key
 ## AlbumTitle.title    #
 ## Person.album_artist #        sets sorted by release_date, ascending
 ## Album.release_date  #
